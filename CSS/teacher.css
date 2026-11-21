@@ -1,0 +1,19 @@
+@font-face {
+    font-family: Grenze;
+    src: url(../ASSETS/Group_Fonts/Grenze_Gotisch/GrenzeGotisch-VariableFont_wght.ttf);
+}
+
+@font-face {
+    font-family: Lindedn Hill;
+    src: url(../ASSETS/Group_Fonts/Linden_Hill/LindenHill-Regular.ttf);
+}
+
+@font-face {
+    font-family: Manuale;
+    src: url(../ASSETS/Group_Fonts/Manuale/Manuale-VariableFont_wght.ttf);
+}
+
+@font-face {
+    font-family: Inter;
+    src: url(../ASSETS/Group_Fonts/Inter/Inter-VariableFont_opsz\,wght.ttf);
+}
