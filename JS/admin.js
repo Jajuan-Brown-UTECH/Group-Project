@@ -63,7 +63,7 @@ function saveStudent(event) {
   }
 
   loadStudents();
-
+  populateStudentDropdowns();
   document.getElementById("studentForm").reset();
 }
 
@@ -183,6 +183,7 @@ function editStudent(id) {
     student.status;
 }
 
+//Deleting Student
 function deleteStudent(id) {
   const confirmed =
     confirm(
@@ -223,6 +224,7 @@ function deleteStudent(id) {
   saveData();
 
   loadStudents();
+  populateStudentDropdowns();
 }
 
 //For the ID dropdowns
