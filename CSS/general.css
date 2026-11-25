@@ -1,0 +1,22 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: var(--default-font);
+}
+
+html{
+  scroll-behavior: smooth;
+}
+
+:root {
+  --bg-color: #f4f7f6;
+  --header-color: rgba(92, 45, 159, 1);
+  --header-hover: rgb(73, 34, 128);
+  --default-font: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  --header-font: 'Grenze Gotisch', serif;
+}
+
+button:hover{
+  cursor: pointer;
+}

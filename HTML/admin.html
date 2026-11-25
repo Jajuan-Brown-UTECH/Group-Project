@@ -1,11 +1,125 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Admin</title>
-    </head>
-    <body>
-        
-    </body>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin</title>
+  <link rel="stylesheet" href="../CSS/general.css">
+  <link rel="stylesheet" href="../CSS/admin.css">
+
+  <!--Grenze Gotisch-->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Grenze+Gotisch:wght@100..900&family=Headland+One&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+  <header id="admin-header">
+    <div id="page-name">
+      <img src="../ASSETS/icons/DC_Logo.jpg" alt="school-logo" id="logo">
+      <div id="page-headers">
+        <h1>deCartet College</h1>
+        <h2>Admin Dashboard</h2>
+      </div>
+
+    </div>
+    <div id="navigation">
+      <nav>
+        <a href="#overview">Overview</a>
+        <a href="#students">Students</a>
+        <a href="#enrollment">Enrollment</a>
+        <a href="#academic">Academic</a>
+      </nav>
+    </div>
+
+  </header>
+
+  <main>
+    <section id="overview" class="admin-section">
+      <h1>Student Registration</h1>
+
+      <form id="studentForm">
+
+        <input type="hidden" id="studentId">
+
+        <input type="text" id="name" placeholder="Student Name" required>
+
+        <input type="email" id="email" placeholder="Email" required>
+
+        <input type="text" id="phone" placeholder="Phone Number" required>
+
+        <select id="status">
+          <option value="Active">Active</option>
+          <option value="Inactive">Inactive</option>
+        </select>
+
+        <button type="submit">
+          Save Student
+        </button>
+
+      </form>
+    </section>
+
+    <section id="students" class="admin-section">
+      <h1>Student Registry</h1>
+
+      <table>
+
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+
+        <tbody id="studentTableBody">
+        </tbody>
+
+      </table>
+
+    </section>
+
+    <section id="enrollment" class="admin-section">
+      <h1>Enrollment Management</h1>
+
+      <select id="enrollmentStudent"></select>
+
+      <input type="text" id="className" placeholder="Class">
+
+      <input type="text" id="cohort" placeholder="Cohort">
+
+      <input type="text" id="semester" placeholder="Semester">
+
+      <button id="assignEnrollment">
+        Assign
+      </button>
+    </section>
+
+    <section id="academic" class="admin-section">
+      <h1>Grade Management</h1>
+
+      <select id="gradeStudent"></select>
+
+      <input type="text" id="module" placeholder="Module">
+
+      <input type="number" id="grade" placeholder="Grade">
+
+      <button id="saveGrade">
+        Save Grade
+      </button>
+    </section>
+
+    
+  </main>
+
+
+
+  <script src="../JS/admin.js"></script>
+</body>
+
 </html>

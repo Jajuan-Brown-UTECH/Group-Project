@@ -1,0 +1,63 @@
+@font-face {
+    font-family: Grenze;
+    src: url(../ASSETS/Group_Fonts/Grenze_Gotisch/GrenzeGotisch-VariableFont_wght.ttf);
+}
+
+@font-face {
+    font-family: Lindedn Hill;
+    src: url(../ASSETS/Group_Fonts/Linden_Hill/LindenHill-Regular.ttf);
+}
+
+@font-face {
+    font-family: Manuale;
+    src: url(../ASSETS/Group_Fonts/Manuale/Manuale-VariableFont_wght.ttf);
+}
+
+@font-face {
+    font-family: Inter;
+    src: url(../ASSETS/Group_Fonts/Inter/Inter-VariableFont_opsz\,wght.ttf);
+}
+
+:root {
+    --Logo_Color: #5C2D9F;
+}
+
+body {
+    background-color: #F4F7F6;
+    margin: 0px;
+}
+
+#headerContainer {
+    padding: 20px 0px;
+    background-color: #9065B5;
+}
+
+#header {
+    display: grid;
+    grid-template: 45px 45px/ 130px 1fr;
+    padding: 10px 0px;
+    background-color: white;
+}
+
+#schoolLogo {
+    grid-row: span 2;
+    width: 80px;
+    height: 90px;
+    align-self: center;
+    justify-self: center;
+}
+
+.headerDescription {
+    font-family: Grenze;
+    margin: 0px;
+    color: var(--Logo_Color);
+    align-self: ;
+}
+
+#schoolName {
+    font-size: 60px;
+}
+
+#pageName {
+    font-size: 40px;
+}
