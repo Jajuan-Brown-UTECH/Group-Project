@@ -75,8 +75,9 @@ function createStudent(
   form,
   status
 ) {
+  //Student Object
   const student = {
-
+    //Creating custom student ID
     studentId: `STU${students.length + 1}`,
     name: name,
     email: email,
