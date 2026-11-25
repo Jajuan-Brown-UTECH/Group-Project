@@ -22,7 +22,7 @@
 #admin-header a {
   text-decoration: none;
   color: rgba(92, 45, 159, 1);
-  font-size: clamp(1rem, 1.5rem + .5vw, 3rem);
+  font-size: clamp(1rem, 1rem + .5vw, 3rem);
 }
 
 #admin-header a:hover {
