@@ -31,7 +31,6 @@ function saveStudent(event) {
 
   const status = document.getElementById("status").value;
 
-
   //Validation Sequences
   if (name === "" || email === "") {
     alert("All required fields must be completed");
@@ -62,8 +61,10 @@ function saveStudent(event) {
     );
   }
 
+  
   loadStudents();
   populateStudentDropdowns();
+  updateCount();
   document.getElementById("studentForm").reset();
 }
 
@@ -225,6 +226,7 @@ function deleteStudent(id) {
 
   loadStudents();
   populateStudentDropdowns();
+  updateCount();
 }
 
 //For the ID dropdowns
@@ -320,5 +322,8 @@ function saveData() {
   );
 }
 
+function updateCount(){
+  document.getElementById("student-count").textContent = students.length;
+}
 loadStudents();
 populateStudentDropdowns();
