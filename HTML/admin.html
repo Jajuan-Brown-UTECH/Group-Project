@@ -38,20 +38,83 @@
 
   <main>
     <section id="overview" class="admin-section">
-      
+      <h1>Student Registration</h1>
+
+      <form id="studentForm">
+
+        <input type="hidden" id="studentId">
+
+        <input type="text" id="name" placeholder="Student Name" required>
+
+        <input type="email" id="email" placeholder="Email" required>
+
+        <input type="text" id="phone" placeholder="Phone Number" required>
+
+        <select id="status">
+          <option value="Active">Active</option>
+          <option value="Inactive">Inactive</option>
+        </select>
+
+        <button type="submit">
+          Save Student
+        </button>
+
+      </form>
     </section>
 
     <section id="students" class="admin-section">
+      <h1>Student Registry</h1>
+
+      <table>
+
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+
+        <tbody id="studentTableBody">
+        </tbody>
+
+      </table>
 
     </section>
 
     <section id="enrollment" class="admin-section">
+      <h1>Enrollment Management</h1>
 
+      <select id="enrollmentStudent"></select>
+
+      <input type="text" id="className" placeholder="Class">
+
+      <input type="text" id="cohort" placeholder="Cohort">
+
+      <input type="text" id="semester" placeholder="Semester">
+
+      <button id="assignEnrollment">
+        Assign
+      </button>
     </section>
 
     <section id="academic" class="admin-section">
+      <h1>Grade Management</h1>
 
+      <select id="gradeStudent"></select>
+
+      <input type="text" id="module" placeholder="Module">
+
+      <input type="number" id="grade" placeholder="Grade">
+
+      <button id="saveGrade">
+        Save Grade
+      </button>
     </section>
+
+    
   </main>
 
 

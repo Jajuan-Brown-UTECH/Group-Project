@@ -1,4 +1,5 @@
 #admin-header {
+  position: relative;
   width: 100%;
   display: flex;
   align-items: center;
@@ -10,51 +11,91 @@
   color: var(--header-color);
 
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
+  z-index: 100;
 }
 
-#admin-header img{
+#admin-header img {
   height: 15vh;
   object-fit: cover;
 }
 
-#admin-header a{
+#admin-header a {
   text-decoration: none;
   color: rgba(92, 45, 159, 1);
   font-size: clamp(1rem, 1.5rem + .5vw, 3rem);
 }
 
-#admin-header a:hover{
+#admin-header a:hover {
   color: var(--header-hover);
   transition: 0.5s ease;
 }
 
-#admin-header h1, h2{
+#admin-header h1,
+h2 {
   display: inline-block;
-   font-family: var(--header-font);
+  font-family: var(--header-font);
 }
 
-#page-name{
+#page-name {
   display: flex;
   align-items: center;
 }
-#page-name, #navigation{
+
+#page-name,
+#navigation {
   height: 100%;
 }
-#admin-header nav{
+
+#admin-header nav {
   display: flex;
   gap: 1vw;
 }
 
-#page-headers{
+#page-headers {
   display: flex;
   flex-direction: column;
 }
 
-#navigation{
+#navigation {
   display: flex;
   justify-content: space-evenly;
 }
 
+/*Sections*/
+.admin-section {
+  position: relative;
+  height: 40vh;
+  padding: 2rem;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  z-index: 1;
+}
+
+input,
+select,
+button {
+  padding: 10px;
+  margin: 5px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  border: 1px solid #ddd;
+  padding: 10px;
+}
+
+/*Student Registry*/
+
+/*Student Records*/
+
+/*Enrollment*/
+
+/*Academics/Grades*/
 
 @media (max-width: 760px) {
   #admin-header {
@@ -71,7 +112,7 @@
 
   #navigation {
     width: 100%;
-    
+
   }
 
   #admin-header nav {
@@ -83,5 +124,9 @@
 
   #admin-header a {
     font-size: clamp(1rem, 4vw, 1.5rem);
+  }
+
+  #admin-section{
+    padding: 1rem;
   }
 }
