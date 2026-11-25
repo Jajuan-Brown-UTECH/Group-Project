@@ -1,3 +1,7 @@
+button:hover {
+  transition: 0.5s ease;
+}
+
 #admin-header {
   position: relative;
   width: 100%;
@@ -33,7 +37,7 @@
 #admin-header h1,
 h2 {
   display: inline-block;
-  font-family: var(--header-font);
+  font-family: var(--nav-header-font);
 }
 
 #page-name {
@@ -62,13 +66,21 @@ h2 {
 }
 
 /*Sections*/
+main {
+  background-color: #f4f7f6;
+}
+
 main h1 {
   margin-bottom: .75rem;
+  text-align: center;
+  color: var(--header-color);
+  text-transform: uppercase;
+  font-family: var(--header-font);
 }
 
 .admin-section {
   position: relative;
-  height: 40vh;
+  height: 100%;
   padding: 2rem;
   margin-bottom: 20px;
   border-radius: 10px;
@@ -80,6 +92,7 @@ select,
 button {
   padding: 10px;
   margin: 5px;
+  text-transform: uppercase;
 }
 
 input {
@@ -89,24 +102,73 @@ input {
 table {
   width: 100%;
   border-collapse: collapse;
+  text-align: center;
+  background-color: #cacaca;
+  border: 2px solid black;
 }
 
 th,
 td {
-  border: 1px solid #ddd;
+  border: 1px solid black;
   padding: 10px;
+  text-transform: uppercase;
 }
 
 /*Student Registry*/
-
 #studentForm {
   display: flex;
   justify-content: center;
 }
 
 /*Student Records*/
+#save-button,
+#edit-button,
+#del-button,
+#enrol-button,
+#grade-button {
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+#save-button,
+#enrol-button,
+#grade-button {
+  background-color: rgb(5, 223, 5);
+}
+
+#save-button:hover,
+#enrol-button:hover,
+#grade-button:hover {
+  background-color: rgb(5, 171, 5);
+}
+
+#edit-button {
+  background-color: gold;
+  width: 5vw;
+}
+
+#edit-button:hover {
+  background-color: rgb(215, 175, 0);
+}
+
+#del-button {
+  background-color: red;
+  width: 5vw;
+}
+
+#del-button:hover {
+  background-color: rgb(217, 0, 0);
+
+}
 
 /*Enrollment*/
+.admin-align {
+  display: flex;
+  justify-content: center;
+}
 
 /*Academics/Grades*/
 
@@ -125,7 +187,22 @@ td {
 
   #navigation {
     width: 100%;
+  }
 
+  input{
+    width: 70%;
+  }
+  form, .admin-align {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+  }
+
+  table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
   }
 
   #admin-header nav {
@@ -141,5 +218,11 @@ td {
 
   #admin-section {
     padding: 1rem;
+  }
+}
+
+@media (max-width: 1200px){
+  #edit-button, #del-button{
+    font-size: 50%;
   }
 }

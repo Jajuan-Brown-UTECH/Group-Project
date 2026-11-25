@@ -8,9 +8,9 @@ const payments = JSON.parse(localStorage.getItem("payments")) || [];
 //Event Listeners for buttons
 document.getElementById("studentForm").addEventListener("submit", saveStudent);
 
-document.getElementById("assignEnrollment").addEventListener("click", assignEnrollment);
+document.getElementById("enrol-button").addEventListener("click", assignEnrollment);
 
-document.getElementById("saveGrade").addEventListener("click", saveGrade);
+document.getElementById("grade-button").addEventListener("click", saveGrade);
 
 
 //Save Student
@@ -27,7 +27,10 @@ function saveStudent(event) {
 
   const phone = document.getElementById("phone").value.trim();
 
+  const form = document.getElementById("form").value;
+
   const status = document.getElementById("status").value;
+
 
   //Validation Sequences
   if (name === "" || email === "") {
@@ -46,7 +49,7 @@ function saveStudent(event) {
   }
 
   if (studentId === "") {
-    createStudent(name, email, phone, status);
+    createStudent(name, email, phone, form, status);
   }
   else {
     updateStudent(
@@ -54,6 +57,7 @@ function saveStudent(event) {
       name,
       email,
       phone,
+      form,
       status
     );
   }
@@ -68,16 +72,16 @@ function createStudent(
   name,
   email,
   phone,
+  form,
   status
 ) {
   const student = {
 
-    studentId:
-      "STU" + Date.now(),
-
+    studentId: `STU${students.length + 1}`,
     name: name,
     email: email,
     phone: phone,
+    form: form,
     status: status,
 
     classId: "",
@@ -95,6 +99,7 @@ function updateStudent(
   name,
   email,
   phone,
+  form,
   status
 ) {
   const student =
@@ -109,6 +114,7 @@ function updateStudent(
   student.name = name;
   student.email = email;
   student.phone = phone;
+  student.form = form;
   student.status = status;
 
   saveData();
@@ -121,24 +127,29 @@ function loadStudents() {
 
   tableBody.innerHTML = "";
 
+  const formNames = {
+    first: "1",
+    second: "2",
+    third: "3",
+    fourth: "4",
+    fifth: "5",
+    "sixth-one": "6A",
+    "sixth-two": "6B"
+  };
+
   students.forEach(student => {
     tableBody.innerHTML += `
         <tr>
             <td>${student.studentId}</td>
             <td>${student.name}</td>
             <td>${student.email}</td>
+            <td>${formNames[student.form]}</td>
             <td>${student.status}</td>
 
             <td>
-                <button
-                onclick="editStudent('${student.studentId}')">
-                Edit
-                </button>
+                <button id="edit-button" onclick="editStudent('${student.studentId}')">Edit</button>
 
-                <button
-                onclick="deleteStudent('${student.studentId}')">
-                Delete
-                </button>
+                <button id="del-button" onclick="deleteStudent('${student.studentId}')"> Delete</button>
             </td>
         </tr>
         `;
@@ -163,6 +174,9 @@ function editStudent(id) {
 
   document.getElementById("phone").value =
     student.phone;
+
+  document.getElementById("form").value =
+    student.form;
 
   document.getElementById("status").value =
     student.status;
@@ -210,27 +224,43 @@ function deleteStudent(id) {
   loadStudents();
 }
 
+//For the ID dropdowns
+function populateStudentDropdowns() {
+  const enrollmentDropdown = document.getElementById("enrollmentStudent");
+
+  const gradeDropdown = document.getElementById("gradeStudent");
+
+  enrollmentDropdown.innerHTML =
+    '<option value="">Select Student</option>';
+
+  gradeDropdown.innerHTML =
+    '<option value="">Select Student</option>';
+
+  students.forEach(student => {
+
+    enrollmentDropdown.innerHTML += `
+            <option value="${student.studentId}">
+                ${student.name}
+            </option>
+        `;
+
+    gradeDropdown.innerHTML += `
+            <option value="${student.studentId}">
+                ${student.name}
+            </option>
+        `;
+  });
+}
+
 //Enrollment
 function assignEnrollment() {
-  const studentId =
-    document
-      .getElementById("enrollmentStudent")
-      .value;
+  const studentId = document.getElementById("enrollmentStudent").value;
 
-  const classId =
-    document
-      .getElementById("className")
-      .value;
+  const classId = document.getElementById("className").value;
 
-  const cohort =
-    document
-      .getElementById("cohort")
-      .value;
+  const cohort = document.getElementById("cohort").value;
 
-  const semester =
-    document
-      .getElementById("semester")
-      .value;
+  const semester = document.getElementById("semester").value;
 
   const student =
     students.find(student =>
@@ -249,24 +279,13 @@ function assignEnrollment() {
 }
 
 
-
+//Saving Grades
 function saveGrade() {
-  const studentId =
-    document
-      .getElementById("gradeStudent")
-      .value;
+  const studentId = document.getElementById("gradeStudent").value;
 
-  const module =
-    document
-      .getElementById("module")
-      .value;
+  const module = document.getElementById("module").value;
 
-  const score =
-    Number(
-      document
-        .getElementById("grade")
-        .value
-    );
+  const score = Number(document.getElementById("grade").value);
 
   const gradeRecord =
   {
@@ -297,3 +316,6 @@ function saveData() {
     JSON.stringify(students)
   );
 }
+
+loadStudents();
+populateStudentDropdowns();

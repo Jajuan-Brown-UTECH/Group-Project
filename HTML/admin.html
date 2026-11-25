@@ -11,7 +11,10 @@
   <!--Grenze Gotisch-->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Grenze+Gotisch:wght@100..900&family=Headland+One&display=swap"
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Grenze+Gotisch:wght@100..900&family=Headland+One&family=Linden+Hill:ital@0;1&display=swap"
     rel="stylesheet">
 </head>
 
@@ -50,14 +53,23 @@
 
         <input type="text" id="phone" placeholder="Phone Number" required>
 
+        <select id="form" required>
+          <option value="" disabled selected hidden>Select Form</option>
+          <option value="first">1</option>
+          <option value="second">2</option>
+          <option value="third">3</option>
+          <option value="fourth">4</option>
+          <option value="fifth">5</option>
+          <option value="sixth-one">6a</option>
+          <option value="sixth-two">6b</option>
+        </select>
+
         <select id="status">
           <option value="Active">Active</option>
           <option value="Inactive">Inactive</option>
         </select>
 
-        <button type="submit">
-          Save Student
-        </button>
+        <button type="submit" id="save-button">Save Student</button>
 
       </form>
     </section>
@@ -72,6 +84,7 @@
             <th>ID</th>
             <th>Name</th>
             <th>Email</th>
+            <th>Form</th>
             <th>Status</th>
             <th>Actions</th>
           </tr>
@@ -87,31 +100,33 @@
     <section id="enrollment" class="admin-section">
       <h1>Enrollment Management</h1>
 
-      <select id="enrollmentStudent"></select>
+      <div class="admin-align">
+        <select id="enrollmentStudent"></select>
 
-      <input type="text" id="className" placeholder="Class">
+        <input type="text" id="className" placeholder="Class">
 
-      <input type="text" id="cohort" placeholder="Cohort">
+        <input type="text" id="cohort" placeholder="Cohort">
 
-      <input type="text" id="semester" placeholder="Semester">
+        <input type="text" id="semester" placeholder="Semester">
 
-      <button id="assignEnrollment">
-        Assign
-      </button>
+        <button id="enrol-button">Assign</button>
+      </div>
+
     </section>
 
     <section id="academic" class="admin-section">
       <h1>Grade Management</h1>
+      <div class="admin-align">
+        <select id="gradeStudent"></select>
 
-      <select id="gradeStudent"></select>
+        <input type="text" id="module" placeholder="Module">
 
-      <input type="text" id="module" placeholder="Module">
+        <input type="number" id="grade" placeholder="Grade">
 
-      <input type="number" id="grade" placeholder="Grade">
+        <button id="grade-button">Save Grade</button>
+      </div>
 
-      <button id="saveGrade">
-        Save Grade
-      </button>
+
     </section>
 
 
