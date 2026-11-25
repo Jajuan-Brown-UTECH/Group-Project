@@ -5,34 +5,73 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About Us</title>
-  <link rel="stylesheet" href="CSS/general.css">
+  <link rel="stylesheet" href="../CSS/general.css">
+  <link rel="stylesheet" href="../CSS/about.css">
+
+  <!--Grenze Gotisch-->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Grenze+Gotisch:wght@100..900&family=Headland+One&display=swap" rel="stylesheet">
 </head>
 
 <body>
-  <header>
-    <nav id="navbar">
-      <div>
-        <img src="../ASSETS/Logo/DC_Logo.jpg" alt="deCarteret College Logo">
-        <span>deCartaret College</span>
+  <header id="about-header">
+    <div id="page-name">
+      <img src="../ASSETS/icons/DC_Logo.jpg" alt="school-logo" id="logo">
+      <div id="page-headers">
+        <h1>deCartet College</h1>
+        <h2>About Us</h2>
       </div>
-    </nav>
+    </div>
+    <div id="navigation">
+      <nav>
+        <a href="#overview">Overview</a>
+        <a href="#achievements">Achievements</a>
+      </nav>
+    </div>
   </header>
-  <h1>ABOUT DECARTERET COLLEGE</h1>
-  <p>deCarteret College, located in Mandeville, Manchester, was founded in 1919. Its founder, the Rt. Rev. Cecil
-    DeCarteret, was the sixth Bishop of Jamaica. The institution was named after him when he demitted office in 1931. It
-    has existed for over a century.</p>
 
-  <p>Originally a preparatory institution, known as the Diocesan Preparatory School for Boys, it became a secondary
-    school (deCarteret College) in 1960 and gained co-educational and grant-aided status in 1976. The Preparatory School
-    was phased out in 1974. Today, deCarteret has a student population of more than 1,200 and it is recognized as one of
-    the leading schools in the Jamaican educational system.</p>
+  <main class="mainSection">
+    <section id="overview">
+        <h1 id="title">About deCarteret College</h1> <br>
 
-  <h2>Landmark Accomplishments:</h2>
-  <p>Over a century old</p>
-  <p>The School Chapel and Anglican connections</p>
-  <p>The new sixth form block</p>
-  <p>CSEC Passes</p>
-  <p>Ms. Rhoden Henry winning Teacher of the year (2025)</p>
+        <div id="imageParallel">
+          <img src="../ASSETS/images/100-Year_Celebration.jpg" alt="100 Year Celebration Image">
+          <div class="rightImg">
+            <img src="../ASSETS/images/Old DC.jpg" alt="DC in 1919">
+            <div class="imgText">
+              <h2>Over 105 Years Of Excellence!</h2>
+              <p>For over a ceuntry, deCarteret College, so named after its founder, the Rt. Rev. Cecil DeCarteret (who was the sixth Bishop of Jamaica) has been cultivating a spirit of excellence in every pupil that passes through its doors.</p>
+            </div>
+          </div>
+        </div>
+    </section>
+
+    <section id="text">
+        <p>Originally a preparatory institution, known as the Diocesan Preparatory School for Boys, it became a secondary school (deCarteret College) in 1960 and gained co-educational and grant-aided status in 1976. The Preparatory School was phased out in 1974. Today, deCarteret has a student population of more than 1,200 and it is recognized as one of the leading schools in the Jamaican educational system.</p>
+    </section>
+
+    <section id="achievements">
+        <h2>Landmark Achievements:</h2> <br>
+
+        <div>
+          <p>Over a century old</p>
+        </div>
+        <div>
+          <p>The School Chapel and Anglican connections</p>
+        </div>
+        <div>
+          <p>Construction of a new sixth form block</p>
+        </div>
+        <div>
+          <p>CSEC Passes</p>
+        </div>
+        <div>
+          <p>Ms. Rhoden Henry winning Teacher of the year (2025)</p>
+        </div>
+    </section>
+  </main>
+  
 
   <script src="../JS/initial.js"></script>
 </body>
