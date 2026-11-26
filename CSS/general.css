@@ -21,3 +21,29 @@ html{
 button:hover{
   cursor: pointer;
 }
+
+.footer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  padding: 2rem;
+  color: white;
+  background-color: var(--header-color);
+}
+
+.footer h3 {
+  font-family: var(--nav-header-font);
+  font-size: 1.5rem;
+  margin-bottom: .5rem;
+}
+
+.footer a {
+  color: white;
+}
+
+.footer-bottom {
+  grid-column: 1 / -1;
+  text-align: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.4);
+  padding-top: 1rem;
+}
