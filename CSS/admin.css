@@ -25,7 +25,7 @@ button:hover {
 
 #admin-header a {
   text-decoration: none;
-  color: rgba(92, 45, 159, 1);
+  color: var(--header-color);
   font-size: clamp(1rem, 1rem + .5vw, 3rem);
 }
 
@@ -114,6 +114,34 @@ td {
   text-transform: uppercase;
 }
 
+/*Overview*/
+#overview-tables {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+#overview-tables table {
+  display: flex;
+  flex-direction: column;
+  color: white;
+  background-color: rgba(92, 45, 159, 1);
+  border: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  border-collapse: separate;
+  border-radius: 10px;
+  align-items: center;
+}
+
+#overview-tables thead,
+#overview-tables tbody,
+#overview-tables th,
+#overview-tables td {
+  border: none;
+  font-size: 25px;
+  padding: 15px;
+
+}
+
 /*Student Registry*/
 #studentForm {
   display: flex;
@@ -189,10 +217,12 @@ td {
     width: 100%;
   }
 
-  input{
+  input {
     width: 70%;
   }
-  form, .admin-align {
+
+  form,
+  .admin-align {
     display: flex;
     flex-direction: column;
     gap: 12px;
@@ -219,10 +249,25 @@ td {
   #admin-section {
     padding: 1rem;
   }
+
+  #overview-tables {
+    flex-direction: column;
+    gap: 2vh;
+  }
+
+  #overview-table thead,
+  tbody,
+  th,
+  td {
+    font-size: 20px;
+    padding: 5px;
+  }
 }
 
-@media (max-width: 1200px){
-  #edit-button, #del-button{
+@media (max-width: 1200px) {
+
+  #edit-button,
+  #del-button {
     font-size: 50%;
   }
 }

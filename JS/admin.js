@@ -61,7 +61,7 @@ function saveStudent(event) {
     );
   }
 
-  
+
   loadStudents();
   populateStudentDropdowns();
   updateCount();
@@ -316,14 +316,19 @@ function saveGrade() {
 
 //Saving All Data
 function saveData() {
-  localStorage.setItem(
-    "students",
-    JSON.stringify(students)
-  );
+  localStorage.setItem("students", JSON.stringify(students));
 }
 
-function updateCount(){
+function updateCount() {
   document.getElementById("student-count").textContent = students.length;
+
+  const activeStudents = students.filter(student => student.status === "Active");
+
+  document.getElementById("active-count").textContent = activeStudents.length;
+
+  const inactiveStudents = students.filter(student => student.status === "Inactive");
+
+  document.getElementById("inactive-count").textContent = inactiveStudents.length;
 }
 loadStudents();
 populateStudentDropdowns();

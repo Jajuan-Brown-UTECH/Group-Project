@@ -39,19 +39,54 @@
   <main>
     <section id="overview" class="admin-section">
       <h1>Overview</h1>
-      <div id="stu-count-table">
-        <table>
-          <thead>
-            <th>Total Students</th>
-          </thead>
+      <!--Table Container-->
+      <div id="overview-tables">
+        <!--Tables-->
+        <div class="stu-count-table">
+          <table>
+            <thead>
+              <th>Total Students</th>
+            </thead>
 
-          <tbody>
-            <tr>
-              <td id="student-count">0</td>
-            </tr>
-          </tbody>
-        </table>
+            <tbody>
+              <tr>
+                <td id="student-count">0</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="stu-count-table">
+          <table>
+            <thead>
+              <th>Total Active Students</th>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td id="active-count">0</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="stu-count-table">
+          <table>
+            <thead>
+              <th>Total Inactive Students</th>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td id="inactive-count">0</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      <!--Overview Table End Tag-->  
       </div>
+
     </section>
 
 
@@ -102,6 +137,7 @@
             <th>Form</th>
             <th>Status</th>
             <th>Actions</th>
+
           </tr>
         </thead>
 
