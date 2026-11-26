@@ -1,19 +1,31 @@
 document.addEventListener("DOMContentLoaded", () => {
     
-    // Load the read-only ledger on page load
+   
+  
+    if (!localStorage.getItem("students")) {
+        localStorage.setItem("students", JSON.stringify([
+            { id: "STU001", name: "Alice Smith", tuitionFee: 5000 },
+            { id: "STU002", name: "Bob Jones", tuitionFee: 4500 },
+            { id: "STU003", name: "Charlie Brown", tuitionFee: 6000 }
+        ]));
+        localStorage.setItem("payments", JSON.stringify([
+            { paymentId: "PAY001", studentId: "STU001", amount: 2000 }
+        ]));
+    }
+   
     loadViewerLedger();
 
-    // Bind Event Listeners
+    // Event Listeners
     document.getElementById("searchInput").addEventListener("keyup", filterLedger);
     document.getElementById("statusFilter").addEventListener("change", filterLedger);
     document.getElementById("printBtn").addEventListener("click", () => window.print());
+    
+    // Logout button
     document.getElementById("logoutBtn").addEventListener("click", handleLogout);
 });
 
-
 // DATA RETRIEVAL (READ-ONLY)
 function loadViewerLedger() {
-    // Retrieve data from localStorage (read-only)
     let students = JSON.parse(localStorage.getItem("students")) || [];
     let payments = JSON.parse(localStorage.getItem("payments")) || [];
     let tableBody = document.getElementById("ledgerBody");
@@ -26,11 +38,13 @@ function loadViewerLedger() {
     }
 
     students.forEach(student => {
-        // Calculate total paid
-        let studentPayments = payments.filter(p => p.studentId === student.id);
+        let currentId = student.studentId || student.id || student.studentID || "Unknown ID";
+        let currentName = student.name || student.fullName || "Unknown Name";
+        let tuition = student.tuitionFee || 50000; 
+        
+        let studentPayments = payments.filter(p => p.studentId === currentId);
         let totalPaid = studentPayments.reduce((sum, p) => sum + p.amount, 0);
         
-        let tuition = student.tuitionFee || 50000; 
         let balance = tuition - totalPaid;
         
         let status = "Outstanding";
@@ -40,11 +54,10 @@ function loadViewerLedger() {
             status = "Pending";
         }
 
-        
         let rowHTML = `
             <tr>
-                <td>${student.id}</td>
-                <td>${student.name}</td>
+                <td>${currentId}</td>
+                <td>${currentName}</td>
                 <td>$${tuition.toFixed(2)}</td>
                 <td>$${totalPaid.toFixed(2)}</td>
                 <td>$${balance.toFixed(2)}</td>
@@ -55,9 +68,7 @@ function loadViewerLedger() {
     });
 }
 
-
-//  SEARCH AND FILTER LOGIC
-
+// SEARCH AND FILTER LOGIC
 function filterLedger() {
     let search = document.getElementById("searchInput").value.toLowerCase();
     let statusFilter = document.getElementById("statusFilter").value;
@@ -65,7 +76,6 @@ function filterLedger() {
     let rows = document.getElementById("ledgerBody").getElementsByTagName("tr");
 
     for (let row of rows) {
-        // Skip empty state row
         if (row.cells.length < 6) continue;
 
         let id = row.cells[0].innerText.toLowerCase();
@@ -83,29 +93,20 @@ function filterLedger() {
     }
 }
 
-
-//  SESSION & LOGOUT
-
-function handleLogout() {
-    sessionStorage.removeItem("currentUserRole");
-    sessionStorage.removeItem("currentUser");
-    window.location.href = "../login.html";
-}
-
-// logout button
-const logoutBtn = document.getElementById('logoutBtn');
-
-
-if (logoutBtn) {
-  logoutBtn.addEventListener('click', function(event) {
-    event.preventDefault(); 
-    
+// SESSION & LOGOUT
+function handleLogout(event) {
+    if(event) event.preventDefault(); 
     
     let confirmLogout = confirm("Are you sure you want to log out?");
-    
-
     if (confirmLogout) {
-      window.location.href = "../login.html"; 
+        sessionStorage.removeItem("currentUserRole");
+        sessionStorage.removeItem("currentUser");
+        window.location.href = "../login.html";
     }
-  });
 }
+
+
+  
+ 
+    
+    
