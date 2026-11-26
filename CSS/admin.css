@@ -198,8 +198,8 @@ td {
   justify-content: center;
 }
 
-/*Academics/Grades*/
 
+/*Media Section*/
 @media (max-width: 760px) {
   #admin-header {
     flex-direction: column;
@@ -265,7 +265,6 @@ td {
 }
 
 @media (max-width: 1200px) {
-
   #edit-button,
   #del-button {
     font-size: 50%;

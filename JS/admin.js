@@ -267,8 +267,7 @@ function assignEnrollment() {
 
   const semester = document.getElementById("semester").value;
 
-  const student =
-    students.find(student =>
+  const student = students.find(student =>
       student.studentId === studentId
     );
 
@@ -294,24 +293,16 @@ function saveGrade() {
 
   const gradeRecord =
   {
-    gradeId: Date.now(),
     studentId: studentId,
     module: module,
     score: score
   };
 
-  grades.push(
-    gradeRecord
-  );
+  grades.push(gradeRecord);
 
-  localStorage.setItem(
-    "grades",
-    JSON.stringify(grades)
-  );
+  localStorage.setItem("grades", JSON.stringify(grades));
 
-  alert(
-    "Grade saved."
-  );
+  alert("Grade saved.");
 }
 
 //Saving All Data
