@@ -1,99 +1,94 @@
 document.addEventListener("DOMContentLoaded", () => {
     
-    // Load the ledger table data when the page opens
+   
+    // This only runs if "students" doesn't exist in LocalStorage yet.
+    if (!localStorage.getItem("students")) {
+        localStorage.setItem("students", JSON.stringify([
+            { id: "STU001", name: "Alice Smith", tuitionFee: 5000 },
+            { id: "STU002", name: "Bob Jones", tuitionFee: 4500 },
+            { id: "STU003", name: "Charlie Brown", tuitionFee: 6000 }
+        ]));
+        localStorage.setItem("payments", JSON.stringify([
+            { paymentId: "PAY001", studentId: "STU001", amount: 2000 }
+        ]));
+    }
+    
     loadLedger();
 
-    // Bind Event Listeners to HTML Elements
+    //  Event Listeners to HTML Elements
     document.getElementById("searchInput").addEventListener("keyup", filterLedger);
     document.getElementById("statusFilter").addEventListener("change", filterLedger);
     document.getElementById("printBtn").addEventListener("click", () => window.print());
     document.getElementById("paymentForm").addEventListener("submit", handlePaymentSubmit);
+    
+    // Logout button
     document.getElementById("logoutBtn").addEventListener("click", handleLogout);
 });
 
-
-//  DATA RETRIEVAL & CALCULATION LOGIC
-
+// DATA RETRIEVAL & CALCULATION LOGIC
 function loadLedger() {
-    // Retrieve shared data from Student 2 & 3's localStorage structure
     let students = JSON.parse(localStorage.getItem("students")) || [];
     let payments = JSON.parse(localStorage.getItem("payments")) || [];
     let tableBody = document.getElementById("ledgerBody");
     
-    // Clear existing rows
     tableBody.innerHTML = "";
 
-    // Handle empty state
     if (students.length === 0) {
         tableBody.innerHTML = `<tr><td colspan="7" style="text-align: center;">No student records found in the database.</td></tr>`;
         return;
     }
 
-    // Loop through every student to build the ledger
     students.forEach(student => {
-        // Calculate total paid by filtering the payments array for this student
-        let studentPayments = payments.filter(p => p.studentId === student.id);
+        let currentId = student.studentId || student.id || student.studentID || "Unknown ID";
+        let currentName = student.name || student.fullName || "Unknown Name";
+        let tuition = student.tuitionFee || 50000; 
         
-        // Sum up the amounts (using reduce to add them all together)
+        let studentPayments = payments.filter(p => p.studentId === currentId);
         let totalPaid = studentPayments.reduce((sum, p) => sum + p.amount, 0);
         
-        // Calculate the outstanding balance
-        let tuition = student.tuitionFee || 50000; // Default fallback if admin didn't set it
         let balance = tuition - totalPaid;
         
-        // Determine Payment Status dynamically
-        let status = "Outstanding"; // Default
+        let status = "Outstanding";
         if (balance <= 0) {
             status = "Paid";
         } else if (totalPaid > 0) {
             status = "Pending";
         }
 
-        
         let rowHTML = `
             <tr>
-                <td>${student.id}</td>
-                <td>${student.name}</td>
+                <td>${currentId}</td>
+                <td>${currentName}</td>
                 <td>$${tuition.toFixed(2)}</td>
                 <td>$${totalPaid.toFixed(2)}</td>
                 <td>$${balance.toFixed(2)}</td>
                 <td><span class="status-badge status-${status.toLowerCase()}">${status}</span></td>
                 <td class="admin-only">
-                    <button class="btn-pay-quick" data-id="${student.id}">Record Payment</button>
+                    <button class="btn-pay-quick" data-id="${currentId}">Record Payment</button>
                 </td>
             </tr>
         `;
         tableBody.innerHTML += rowHTML;
     });
 
-    // After rendering rows, attach listeners to the new "Record Payment" buttons
     attachQuickPayListeners();
-    
-    // Enforce Role-Based Access Control (Hide admin stuff from viewers)
     checkUserRole();
 }
 
-
-//  PAYMENT PROCESSING
-
+// PAYMENT PROCESSING
 function handlePaymentSubmit(event) {
-    // Prevent the form from refreshing the page
     event.preventDefault();
 
     let studentId = document.getElementById("payStudentId").value.trim();
-    let amountInput = document.getElementById("payAmount").value;
-    let amount = parseFloat(amountInput);
+    let amount = parseFloat(document.getElementById("payAmount").value);
 
-    // Validation: Ensure ID exists and amount is a positive number
     if (!studentId || isNaN(amount) || amount <= 0) {
         alert("Please enter a valid Student ID and a positive amount.");
         return;
     }
 
-    // Get existing payments from storage
     let payments = JSON.parse(localStorage.getItem("payments")) || [];
     
-    // Create new payment record
     let newPayment = {
         paymentId: "PAY" + Date.now(),
         studentId: studentId,
@@ -102,41 +97,31 @@ function handlePaymentSubmit(event) {
         status: "Paid"
     };
 
-    // Save to localStorage
     payments.push(newPayment);
     localStorage.setItem("payments", JSON.stringify(payments));
     
-    // Reset form and reload table to show updated balances
     document.getElementById("paymentForm").reset();
     alert(`Payment of $${amount.toFixed(2)} recorded for ${studentId}.`);
-    loadLedger();
+    loadLedger(); // Refresh table
 }
 
-// Connects the "Record Payment" buttons inside the table to the form
 function attachQuickPayListeners() {
     let quickPayButtons = document.querySelectorAll(".btn-pay-quick");
     quickPayButtons.forEach(btn => {
         btn.addEventListener("click", (e) => {
             let studentId = e.target.getAttribute("data-id");
-            
-          
             document.getElementById("payStudentId").value = studentId;
-            
             document.getElementById("payAmount").focus();
             
-            
-            document.querySelector(".payment-entry").scrollIntoView({ behavior: 'smooth' });
+            document.getElementById("paymentForm").scrollIntoView({ behavior: 'smooth' });
         });
     });
 }
 
-
 // SEARCH AND FILTER LOGIC
-
 function filterLedger() {
     let search = document.getElementById("searchInput").value.toLowerCase();
     let statusFilter = document.getElementById("statusFilter").value;
-    
     
     let rows = document.getElementById("ledgerBody").getElementsByTagName("tr");
 
@@ -150,7 +135,6 @@ function filterLedger() {
         let matchesSearch = id.includes(search) || name.includes(search);
         let matchesStatus = (statusFilter === "All" || status === statusFilter);
 
-        // Show or hide the row based on matches
         if (matchesSearch && matchesStatus) {
             row.style.display = ""; 
         } else {
@@ -159,15 +143,10 @@ function filterLedger() {
     }
 }
 
-
-// ROLE CHECK & LOGOUT (Viewer Safety)
-
+// ROLE CHECK & LOGOUT
 function checkUserRole() {
-    // Student 2's auth.js should save the role in sessionStorage upon login
     let role = sessionStorage.getItem("currentUserRole");
     
-    // If the user is a Viewer, hide all admin-only elements
-    // (This hides the payment form and the action column)
     if (role === "Viewer") {
         document.querySelectorAll(".admin-only").forEach(el => {
             el.style.display = "none";
@@ -175,34 +154,18 @@ function checkUserRole() {
     }
 }
 
-function handleLogout() {
-    // Clear session and redirect to login page
-    sessionStorage.removeItem("currentUserRole");
-    sessionStorage.removeItem("currentUser");
-    window.location.href = "../login.html";
-}
+function handleLogout(event) {
+    if(event) event.preventDefault(); 
 
-// Select the logout button
-const logoutBtn = document.getElementById('logoutBtn');
-
-// Add a click event listener
-if (logoutBtn) {
-  logoutBtn.addEventListener('click', function(event) {
-    event.preventDefault(); 
-    
-    // Clear any saved user data 
-    // localStorage.clear(); 
-    
-    //  Confirm with the user
     let confirmLogout = confirm("Are you sure you want to log out?");
     
-    //  Redirect to the login page
     if (confirmLogout) {
-      window.location.href = "../login.html"; 
+        sessionStorage.removeItem("currentUserRole");
+        sessionStorage.removeItem("currentUser");
+        window.location.href = "../login.html"; 
     }
-  });
 }
-   
 
-           
+    
 
+  
