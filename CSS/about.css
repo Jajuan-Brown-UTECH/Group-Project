@@ -34,7 +34,7 @@
 #about-header h1,
 #about-header h2 {
   display: inline-block;
-  font-family: var(--header-font);
+  font-family: var(--nav-header-font);
 }
 
 #about-header nav {
@@ -73,7 +73,7 @@
 }
 
 .mainSection h1, .mainSection h2{
-  font-family: var(--default-font);
+  font-family: var(--header-font);
 }
 
 #title{
