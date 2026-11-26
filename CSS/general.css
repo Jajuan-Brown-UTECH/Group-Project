@@ -22,6 +22,113 @@ button:hover{
   cursor: pointer;
 }
 
+/*Header*/
+button:hover {
+  transition: 0.5s ease;
+}
+
+#header {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+
+  background-color: white;
+  padding: 1rem;
+  color: var(--header-color);
+  margin-bottom: 2rem;
+
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+  z-index: 100;
+}
+
+#page-name {
+  display: flex;
+  align-items: center;
+}
+
+#page-name,
+#navigation {
+  height: 100%;
+}
+
+#header img {
+  height: 10vh;
+  object-fit: cover;
+}
+
+#header a {
+  text-decoration: none;
+  color: var(--header-color);
+  font-size: clamp(1rem, 1rem + .4vw, 3rem);
+}
+
+#header a:hover {
+  color: var(--header-hover);
+  transition: 0.5s ease;
+}
+
+#header h1,
+#header h2 {
+  display: inline-block;
+  font-family: var(--nav-header-font);
+}
+
+#header nav {
+  display: flex;
+  gap: 2vw;
+}
+
+#page-name {
+  display: flex;
+  align-items: center;
+}
+
+#page-name,
+#navigation {
+  height: 100%;
+}
+
+#page-headers {
+  display: flex;
+  flex-direction: column;
+  margin-left: 5px;
+}
+
+#page-headers nav {
+  display: flex;
+  gap: 1vw;
+}
+
+#navigation {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+/*Tooltip Hover For Image*/
+#img-container{
+  position: relative;
+}
+#img-container .tooltip{
+  position: absolute;
+  background-color: var(--header-color);
+  color: white;
+  padding: 7px 10px;
+  border-radius: 5px;
+  left: 20%;
+  bottom: -28%;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.3);
+
+  opacity: 0;
+  transition: opacity .25s;
+}
+
+#img-container:hover .tooltip{
+  opacity: 1;
+}
+
 .footer {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
