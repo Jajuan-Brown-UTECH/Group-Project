@@ -104,10 +104,3 @@ button a {
     color: white;
     text-decoration: none;
 }
-
-
-
-footer p{
-    font-family: var(--default-font);
-    text-align: center;
-}
