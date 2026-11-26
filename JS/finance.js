@@ -1,9 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
     
-    // Load the ledger table data when the page opens
     loadLedger();
 
-    // Bind Event Listeners to HTML Elements
+    // Event Listeners to HTML Elements
     document.getElementById("searchInput").addEventListener("keyup", filterLedger);
     document.getElementById("statusFilter").addEventListener("change", filterLedger);
     document.getElementById("printBtn").addEventListener("click", () => window.print());
@@ -11,11 +10,11 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("logoutBtn").addEventListener("click", handleLogout);
 });
 
-// ==========================================
-// 2. DATA RETRIEVAL & CALCULATION LOGIC
-// ==========================================
+
+// DATA RETRIEVAL & CALCULATION LOGIC
+
 function loadLedger() {
-    // Retrieve shared data from Student 2 & 3's localStorage structure
+    // Retrieve shared data from Student's localStorage
     let students = JSON.parse(localStorage.getItem("students")) || [];
     let payments = JSON.parse(localStorage.getItem("payments")) || [];
     let tableBody = document.getElementById("ledgerBody");
@@ -23,7 +22,7 @@ function loadLedger() {
     // Clear existing rows
     tableBody.innerHTML = "";
 
-    // Handle empty state
+  
     if (students.length === 0) {
         tableBody.innerHTML = `<tr><td colspan="7" style="text-align: center;">No student records found in the database.</td></tr>`;
         return;
@@ -31,14 +30,14 @@ function loadLedger() {
 
     // Loop through every student to build the ledger
     students.forEach(student => {
-        // Calculate total paid by filtering the payments array for this student
+        // Calculate total paid by filtering the payments array for student
         let studentPayments = payments.filter(p => p.studentId === student.id);
         
-        // Sum up the amounts (using reduce to add them all together)
+        // Sum up the amounts 
         let totalPaid = studentPayments.reduce((sum, p) => sum + p.amount, 0);
         
         // Calculate the outstanding balance
-        let tuition = student.tuitionFee || 50000; // Default fallback if admin didn't set it
+        let tuition = student.tuitionFee || 50000; 
         let balance = tuition - totalPaid;
         
         // Determine Payment Status dynamically
@@ -49,7 +48,7 @@ function loadLedger() {
             status = "Pending";
         }
 
-        // Build the HTML row with dynamic classes for styling
+        
         let rowHTML = `
             <tr>
                 <td>${student.id}</td>
@@ -66,16 +65,13 @@ function loadLedger() {
         tableBody.innerHTML += rowHTML;
     });
 
-    // After rendering rows, attach listeners to the new "Record Payment" buttons
     attachQuickPayListeners();
     
-    // Enforce Role-Based Access Control (Hide admin stuff from viewers)
     checkUserRole();
 }
 
-// ==========================================
-// 3. PAYMENT PROCESSING
-// ==========================================
+//PAYMENT PROCESSING
+
 function handlePaymentSubmit(event) {
     // Prevent the form from refreshing the page
     event.preventDefault();
@@ -131,9 +127,8 @@ function attachQuickPayListeners() {
     });
 }
 
-// ==========================================
-// 4. SEARCH AND FILTER LOGIC
-// ==========================================
+// SEARCH AND FILTER LOGIC
+
 function filterLedger() {
     let search = document.getElementById("searchInput").value.toLowerCase();
     let statusFilter = document.getElementById("statusFilter").value;
@@ -152,7 +147,7 @@ function filterLedger() {
         let matchesSearch = id.includes(search) || name.includes(search);
         let matchesStatus = (statusFilter === "All" || status === statusFilter);
 
-        // Show or hide the row based on matches
+        
         if (matchesSearch && matchesStatus) {
             row.style.display = ""; 
         } else {
@@ -161,15 +156,14 @@ function filterLedger() {
     }
 }
 
-// ==========================================
-// 5. ROLE CHECK & LOGOUT 
-// ==========================================
+
+// ROLE CHECK & LOGOUT 
 function checkUserRole() {
  
     let role = sessionStorage.getItem("currentUserRole");
     
     // If the user is a Viewer, hide all admin-only elements
-    // (This hides the payment form and the action column)
+ 
     if (role === "Viewer") {
         document.querySelectorAll(".admin-only").forEach(el => {
             el.style.display = "none";
