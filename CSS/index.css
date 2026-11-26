@@ -147,3 +147,32 @@
 #img-container:hover .tooltip{
   opacity: 1;
 }
+
+button {
+    background-color: #5c2d9f;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 5px;
+    font-size: 16px;
+    text-align: center;
+    cursor: pointer;
+    display: block;
+    margin: 20px auto;
+}
+
+button:hover {
+    background-color: #48227d;
+}
+
+button a {
+    color: white;
+    text-decoration: none;
+}
+
+
+
+footer p{
+    font-family: var(--default-font);
+    text-align: center;
+}
