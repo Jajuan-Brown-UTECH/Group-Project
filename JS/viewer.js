@@ -1,20 +1,17 @@
 document.addEventListener("DOMContentLoaded", () => {
-    
-    // Load the read-only ledger on page load
+   
     loadViewerLedger();
 
-    // Bind Event Listeners
+    //Event Listeners
     document.getElementById("searchInput").addEventListener("keyup", filterLedger);
     document.getElementById("statusFilter").addEventListener("change", filterLedger);
     document.getElementById("printBtn").addEventListener("click", () => window.print());
     document.getElementById("logoutBtn").addEventListener("click", handleLogout);
 });
 
-// ==========================================
-// 2. DATA RETRIEVAL (READ-ONLY)
-// ==========================================
+
 function loadViewerLedger() {
-    // Retrieve data from localStorage (read only)
+    // Retrieve data from localStorage (read-only)
     let students = JSON.parse(localStorage.getItem("students")) || [];
     let payments = JSON.parse(localStorage.getItem("payments")) || [];
     let tableBody = document.getElementById("ledgerBody");
@@ -41,7 +38,7 @@ function loadViewerLedger() {
             status = "Pending";
         }
 
-        // Notice: No Action column, no buttons, no forms.
+       
         let rowHTML = `
             <tr>
                 <td>${student.id}</td>
@@ -56,9 +53,8 @@ function loadViewerLedger() {
     });
 }
 
-// ==========================================
-// 3. SEARCH AND FILTER LOGIC
-// ==========================================
+//SEARCH AND FILTER 
+
 function filterLedger() {
     let search = document.getElementById("searchInput").value.toLowerCase();
     let statusFilter = document.getElementById("statusFilter").value;
