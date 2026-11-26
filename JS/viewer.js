@@ -1,8 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
-   
+    
+    // Load the read-only ledger on page load
     loadViewerLedger();
 
-    //Event Listeners
+    // Bind Event Listeners
     document.getElementById("searchInput").addEventListener("keyup", filterLedger);
     document.getElementById("statusFilter").addEventListener("change", filterLedger);
     document.getElementById("printBtn").addEventListener("click", () => window.print());
@@ -10,6 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
+// DATA RETRIEVAL (READ-ONLY)
 function loadViewerLedger() {
     // Retrieve data from localStorage (read-only)
     let students = JSON.parse(localStorage.getItem("students")) || [];
@@ -38,7 +40,7 @@ function loadViewerLedger() {
             status = "Pending";
         }
 
-       
+        
         let rowHTML = `
             <tr>
                 <td>${student.id}</td>
@@ -53,7 +55,8 @@ function loadViewerLedger() {
     });
 }
 
-//SEARCH AND FILTER 
+
+//  SEARCH AND FILTER LOGIC
 
 function filterLedger() {
     let search = document.getElementById("searchInput").value.toLowerCase();
@@ -80,11 +83,29 @@ function filterLedger() {
     }
 }
 
-// ==========================================
-// 4. SESSION & LOGOUT
-// ==========================================
+
+//  SESSION & LOGOUT
+
 function handleLogout() {
     sessionStorage.removeItem("currentUserRole");
     sessionStorage.removeItem("currentUser");
     window.location.href = "../login.html";
+}
+
+// logout button
+const logoutBtn = document.getElementById('logoutBtn');
+
+
+if (logoutBtn) {
+  logoutBtn.addEventListener('click', function(event) {
+    event.preventDefault(); 
+    
+    
+    let confirmLogout = confirm("Are you sure you want to log out?");
+    
+
+    if (confirmLogout) {
+      window.location.href = "../login.html"; 
+    }
+  });
 }
