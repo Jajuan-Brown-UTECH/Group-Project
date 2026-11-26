@@ -15,6 +15,16 @@
   z-index: 100;
 }
 
+#page-name {
+  display: flex;
+  align-items: center;
+}
+
+#page-name,
+#navigation {
+  height: 100%;
+}
+
 #about-header img {
   height: 10vh;
   object-fit: cover;

@@ -6,22 +6,42 @@
   <meta name="author" content = "Group">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Home</title>
-  <link rel="stylesheet" href="CSS/style.css">
-  <link rel="stylesheet" href="CSS/general.css">
+  <link rel="stylesheet" href="../CSS/general.css">
+  <link rel="stylesheet" href="../CSS/index.css">
+
+    <!--Grenze Gotisch-->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Grenze+Gotisch:wght@100..900&family=Headland+One&display=swap" rel="stylesheet">
 </head>
 
 <body>
-  <header>
-    <nav id="navbar">
-      <!--To save us the stress and headache for now,
-      the homepage doesn't include image location in
-      the automatic header from the javascript. Fyah bun dat!-->
-      <div> 
-        <img src="ASSETS/Logo/DC_Logo.jpg" alt="deCarteret College Logo">
-        <span>deCartaret College</span>
-      </div> 
-    </nav>
+  <header id="about-header">
+    <div id="page-name">
+      <div id="img-container">
+        <a href="index.html"> <img src="ASSETS/icons/DC_Logo.jpg" alt="school-logo" id="logo"></a>
+        <div class="tooltip">Home</div>
+      </div>
+      <div id="page-headers">
+        <h1>deCartet College</h1>
+        <h2>About Us</h2>
+      </div>
+    </div>
+    <div id="navigation">
+      <nav>
+        <a href="#overview">Overview</a>
+        <a href="#achievements">Achievements</a>
+      </nav>
+    </div>
   </header>
+
+  <main>
+    <section>
+      <img src="ASSETS/images/Prefecture2025.png" alt="">
+    </section>
+    <section></section>
+    <section></section>
+  </main>
 
   <script src="JS/initial.js"></script>
 </body>
