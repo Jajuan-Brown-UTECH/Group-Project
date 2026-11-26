@@ -1,0 +1,177 @@
+main {
+    padding: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+#admin-header {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+
+  background-color: white;
+  padding: 1rem;
+  color: var(--header-color);
+
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
+  z-index: 100;
+}
+
+#admin-header img {
+  height: 15vh;
+  object-fit: cover;
+}
+
+#admin-header a {
+  text-decoration: none;
+  color: rgba(92, 45, 159, 1);
+  font-size: clamp(1rem, 1rem + .5vw, 3rem);
+}
+
+#admin-header a:hover {
+  color: var(--header-hover);
+  transition: 0.5s ease;
+}
+
+#admin-header h1,
+h2 {
+  display: inline-block;
+  font-family: var(--header-font);
+}
+
+#page-name {
+  display: flex;
+  align-items: center;
+}
+
+#page-name,
+#navigation {
+  height: 100%;
+}
+
+#admin-header nav {
+  display: flex;
+  gap: 1vw;
+}
+
+#page-headers {
+  display: flex;
+  flex-direction: column;
+}
+@font-face {
+    font-family: 'Grenze Gotisch';
+    src: url('../ASSETS/Group_Fonts/Grenze_Gotisch/GrenzeGotisch-VariableFont_wght.ttf');
+}
+
+@font-face {
+    font-family: 'Inter';
+    src: url('../ASSETS/Group_Fonts/Inter/Inter-VariableFont_wght.ttf');
+}
+
+h1{
+    font-family: 'Grenze Gotisch', serif;
+}
+
+h2{
+    font-family: 'Inter', serif;
+}
+/* 2. Search and Filter Area */
+section {
+    background-color: #f4f4f4;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+}
+
+/* Put the inputs side-by-side */
+section div {
+    display: inline-block;
+    margin-right: 15px;
+    margin-bottom: 10px;
+}
+
+label {
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+input, select {
+    padding: 5px;
+    border: 1px solid #999;
+}
+
+/* 3. Buttons */
+button {
+    background-color: rgb(127, 32, 175); 
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: darkpurple;
+}
+
+/* 4. The Table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+th, td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color:  rgb(127, 32, 175);
+    color: white;
+}
+
+caption {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* 5. Status Colors */
+.status-paid {
+    color: green;
+    font-weight: bold;
+}
+
+.status-pending {
+    color: orange;
+    font-weight: bold;
+}
+
+.status-outstanding {
+    color: red;
+    font-weight: bold;
+}
+
+/* 6. Payment Form Area */
+.payment-entry {
+    background-color: #f4f4f4;
+    padding: 15px;
+    margin-top: 30px;
+    border: 1px solid #ccc;
+}
+
+.payment-entry div {
+    margin-bottom: 10px;
+}
+
+@media print {
+    header, nav, footer, section, button {
+        display: none;
+    }
+    table {
+        border: 1px solid black;
+    }
+}
