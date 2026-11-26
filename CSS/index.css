@@ -1,4 +1,4 @@
-#about-header {
+#home-header {
   position: relative;
   width: 100%;
   display: flex;
@@ -25,43 +25,6 @@
   height: 100%;
 }
 
-#about-header img {
-  height: 10vh;
-  object-fit: cover;
-}
-
-#about-header a {
-  text-decoration: none;
-  color: rgba(92, 45, 159, 1);
-  font-size: clamp(1rem, 1rem + .4vw, 3rem);
-}
-
-#about-header a:hover {
-  color: var(--header-hover);
-  transition: 0.5s ease;
-}
-
-#about-header h1,
-#about-header h2 {
-  display: inline-block;
-  font-family: var(--nav-header-font);
-}
-
-#about-header nav {
-  display: flex;
-  gap: 2vw;
-}
-
-#page-name {
-  display: flex;
-  align-items: center;
-}
-
-#page-name,
-#navigation {
-  height: 100%;
-}
-
 #page-headers {
   display: flex;
   flex-direction: column;
@@ -71,4 +34,116 @@
 #navigation {
   display: flex;
   justify-content: space-evenly;
+}
+
+#home-header img {
+  height: 10vh;
+  object-fit: cover;
+}
+
+#home-header a {
+  text-decoration: none;
+  color: rgba(92, 45, 159, 1);
+  font-size: clamp(1rem, 1rem + .4vw, 3rem);
+}
+
+#home-header a:hover {
+  color: var(--header-hover);
+  transition: 0.5s ease;
+}
+
+#home-header h1,
+#home-header h2 {
+  display: inline-block;
+  font-family: var(--nav-header-font);
+}
+
+#home-header nav {
+  display: flex;
+  gap: 2vw;
+}
+
+/*Sections*/
+
+.headerImg {
+    position: relative;
+    width: 100%;
+    line-height: 0;
+}
+
+.headerImg #frontImg {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.headerImg::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.5),
+        transparent
+    );
+    z-index: 1;
+    pointer-events: none;
+}
+
+.headerImg #text {
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    color: white;
+    font-size: 100px;
+    text-align: center;
+    font-family: var(--default-font);
+    z-index: 2;
+    line-height: normal;
+}
+
+.about {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 40px;
+    padding: 60px 8%;
+    position: relative;
+}
+
+.about img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.about div {
+    padding: 20px;
+}
+
+/*Tooltip Hover For Image*/
+#img-container{
+  position: relative;
+}
+#img-container .tooltip{
+  position: absolute;
+  background-color: var(--header-color);
+  color: white;
+  padding: 7px 10px;
+  border-radius: 5px;
+  left: 20%;
+  bottom: -28%;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.3);
+
+  opacity: 0;
+  transition: opacity .25s;
+}
+
+#img-container:hover .tooltip{
+  opacity: 1;
 }
