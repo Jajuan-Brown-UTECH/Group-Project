@@ -36,15 +36,14 @@
     </header>
 
     <main class="login-container">
-        <section class="login-card">
+        <section class="login-card center-wrapper">
             <h1>School Portal</h1>
-            <p>Please sign in to continue</p>
-
+            <p><b>Please sign in to continue</b></p>
             <!--Validation message-->
             <div id="message" class="message"></div>
 
             <!--Login Form-->
-            <form id="loginForm">
+            <form id="loginForm" novalidate>
                 <div class="form-group">
                     <label for="username">Username</label>
                     <input type="text" id="username" placeholder="Please enter your username" autocomplete="username" required>
@@ -59,7 +58,7 @@
                 <button type="submit" id="login-btn" class="purple-btn">Login</button>
             </form>
 
-            <p class="login-note">Administrators, Teachers and Authorized Viewers each go to their respective dashboard's after logining in.</p>
+            <p class="login-note"><b>Administrators, Teachers and Authorized Viewers each go to their respective dashboard's after logining in.</b></p>
             </br></br>
         </section>
     </main>
