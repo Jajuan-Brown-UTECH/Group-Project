@@ -13,12 +13,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Grenze+Gotisch:wght@100..900&family=Headland+One&display=swap" rel="stylesheet">
 </head>
 
-<body> 
-    <header id="login-header">
+<body>
+    <header id="login-header" class="login-top">
         <div id="page-name">
             <div id="img-container">
-             <a href="../index.html"> <img src="../ASSETS/icons/DC_Logo.jpg" alt="school-logo" id="logo"></a>
-                <div class="tooltip"></div>
+                <img src="../ASSETS/icons/DC_Logo.jpg" alt="school-logo" id="logo">
             </div>
              <div id="page-headers">
                 <h1>DeCartet College</h1>
@@ -46,22 +45,22 @@
 
             <!--Login Form-->
             <form id="loginForm">
-
                 <div class="form-group">
                     <label for="username">Username</label>
-
-                    <input type="text" id="username" placeholder="Enter username" required>
+                    <input type="text" id="username" placeholder="Please enter your username" autocomplete="username" required>
                 </div>
 
                 <div class="form-group">
                     <label for="password">Password</label>
-
-                    <input type="password" id="password" placeholder="Enter password" required>
+                    <input type="password" id="password" placeholder="Please enter your password" autocomplete="password" required>
                 </div>
 
                 <!--Login button-->
-                <button type="submit" id="login-btn">Login</button>
+                <button type="submit" id="login-btn" class="purple-btn">Login</button>
             </form>
+
+            <p class="login-note">Administrators, Teachers and Authroised Viewers each go to their respective dashboard's after logining in.</p>
+            </br></br>
         </section>
     </main>
 
