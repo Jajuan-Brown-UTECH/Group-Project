@@ -99,6 +99,11 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+label{
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
 /*Full-width Inputs for unsername and pasword*/
 input[type=text], input[type=password] {
   width: 100%;
@@ -112,4 +117,13 @@ input[type=text], input[type=password] {
 
 .login-note{
     text-align: center;
+}
+
+.form-group{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#user-type{
+
 }
