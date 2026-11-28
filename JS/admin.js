@@ -23,6 +23,8 @@ function saveStudent(event) {
 
   const name = document.getElementById("name").value.trim();
 
+  const dob = document.getElementById("dob").value;
+
   const email = document.getElementById("email").value.trim();
 
   const phone = document.getElementById("phone").value.trim();
@@ -48,12 +50,13 @@ function saveStudent(event) {
   }
 
   if (studentId === "") {
-    createStudent(name, email, phone, form, status);
+    createStudent(name, dob, email, phone, form, status);
   }
   else {
     updateStudent(
       studentId,
       name,
+      dob,
       email,
       phone,
       form,
@@ -71,6 +74,7 @@ function saveStudent(event) {
 //Creating Student
 function createStudent(
   name,
+  dob,
   email,
   phone,
   form,
@@ -81,6 +85,7 @@ function createStudent(
     //Creating custom student ID
     studentId: `STU${students.length + 1}`,
     name: name,
+    dob: dob,
     email: email,
     phone: phone,
     form: form,
@@ -99,6 +104,7 @@ function createStudent(
 function updateStudent(
   id,
   name,
+  dob,
   email,
   phone,
   form,
@@ -114,6 +120,7 @@ function updateStudent(
   }
 
   student.name = name;
+  student.dob = dob;
   student.email = email;
   student.phone = phone;
   student.form = form;
@@ -144,6 +151,7 @@ function loadStudents() {
         <tr>
             <td>${student.studentId}</td>
             <td>${student.name}</td>
+            <td>${student.dob}</td>
             <td>${student.email}</td>
             <td>${formNames[student.form]}</td>
             <td>${student.status}</td>
@@ -171,6 +179,9 @@ function editStudent(id) {
   document.getElementById("name").value =
     student.name;
 
+  document.getElementById("dob").value =
+    student.dob;
+
   document.getElementById("email").value =
     student.email;
 
@@ -195,32 +206,17 @@ function deleteStudent(id) {
     return;
   }
 
-  const studentIndex =
-    students.findIndex(student =>
-      student.studentId === id
-    );
+  const studentIndex = students.findIndex(student => student.studentId === id);
 
   students.splice(studentIndex, 1);
 
-  const newGrades =
-    grades.filter(grade =>
-      grade.studentId !== id
-    );
+  const newGrades = grades.filter(grade => grade.studentId !== id);
 
-  const newPayments =
-    payments.filter(payment =>
-      payment.studentId !== id
-    );
+  const newPayments = payments.filter(payment => payment.studentId !== id);
 
-  localStorage.setItem(
-    "grades",
-    JSON.stringify(newGrades)
-  );
+  localStorage.setItem("grades", JSON.stringify(newGrades));
 
-  localStorage.setItem(
-    "payments",
-    JSON.stringify(newPayments)
-  );
+  localStorage.setItem("payments", JSON.stringify(newPayments));
 
   saveData();
 
@@ -268,8 +264,8 @@ function assignEnrollment() {
   const semester = document.getElementById("semester").value;
 
   const student = students.find(student =>
-      student.studentId === studentId
-    );
+    student.studentId === studentId
+  );
 
   student.classId = classId;
   student.cohort = cohort;

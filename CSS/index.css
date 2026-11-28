@@ -1,0 +1,7 @@
+#index-body {
+  background-image: url(../ASSETS/images/IMG-20250123-WA0020.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  min-height: 100vh;
+}

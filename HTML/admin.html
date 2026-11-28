@@ -105,6 +105,8 @@
 
         <input type="text" id="name" placeholder="Student Name" required>
 
+        <input type="date" id="dob" name="dob" autocomplete="bday" required>
+
         <input type="email" id="email" placeholder="Email" required>
 
         <input type="text" id="phone" placeholder="Phone Number" required>
@@ -133,22 +135,26 @@
     <section id="students" class="admin-section">
       <h1>Student Registry</h1>
 
-      <table>
+      <div id="table-wrapper">
+        <table id="stu-table-container">
 
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Form</th>
-            <th>Status</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Birthday</th>
+              <th>Email</th>
+              <th>Form</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
 
-        <!--Dynamic Table Generation-->
-        <tbody id="studentTableBody">
-        </tbody>
+          <!--Dynamic Table Generation-->
+          <tbody id="studentTableBody">
+          </tbody>
+
+      </div>
 
       </table>
 

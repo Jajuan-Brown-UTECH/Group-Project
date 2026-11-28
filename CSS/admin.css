@@ -1,3 +1,7 @@
+body {
+  background-color: #f4f7f6;
+}
+
 button:hover {
   transition: 0.5s ease;
 }
@@ -56,10 +60,11 @@ h2 {
 }
 
 /*Tooltip Hover For Image*/
-#img-container{
+#img-container {
   position: relative;
 }
-#img-container .tooltip{
+
+#img-container .tooltip {
   position: absolute;
   background-color: var(--header-color);
   color: white;
@@ -73,7 +78,7 @@ h2 {
   transition: opacity .25s;
 }
 
-#img-container:hover .tooltip{
+#img-container:hover .tooltip {
   opacity: 1;
 }
 
@@ -90,10 +95,6 @@ h2 {
 }
 
 /*Sections*/
-main {
-  background-color: #f4f7f6;
-}
-
 main h1 {
   margin-bottom: .75rem;
   text-align: center;
@@ -105,10 +106,14 @@ main h1 {
 .admin-section {
   position: relative;
   height: 100%;
-  padding: 2rem;
+  padding: 3rem;
   margin-bottom: 20px;
   border-radius: 10px;
   z-index: 1;
+  background-color: white;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.3);
+  margin: 5vw;
+  overflow-x: auto;
 }
 
 input,
@@ -125,10 +130,11 @@ input {
 
 table {
   width: 100%;
-  border-collapse: collapse;
+  border-collapse: separate;
   text-align: center;
   background-color: #cacaca;
   border: 2px solid black;
+  border-radius: 5px;
 }
 
 th,
@@ -136,6 +142,10 @@ td {
   border: 1px solid black;
   padding: 10px;
   text-transform: uppercase;
+}
+
+td {
+  background-color: white;
 }
 
 /*Overview*/
@@ -166,10 +176,25 @@ td {
 
 }
 
+#overview-tables td {
+  background: inherit;
+}
+
 /*Student Registry*/
 #studentForm {
   display: flex;
   justify-content: center;
+}
+
+#table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+#stu-table-container {
+  width: 100%;
+  min-width: 700px;
+  border-collapse: collapse;
 }
 
 /*Student Records*/
@@ -253,10 +278,20 @@ td {
     align-items: center;
   }
 
-  table {
-    display: block;
-    overflow-x: auto;
-    white-space: nowrap;
+  #enrol-button, #grade-button, #save-button{
+    font-size: 20px;
+    padding: 10px 20px;
+  }
+
+  #stu-table-container th,
+  #stu-table-container td {
+    font-size: 12px;
+  }
+
+  #edit-button,
+  #del-button {
+    width: 70%;
+    font-size: 13px;
   }
 
   #admin-header nav {
@@ -279,18 +314,14 @@ td {
     gap: 2vh;
   }
 
-  #overview-table thead,
-  tbody,
-  th,
-  td {
+  #overview-tables thead,
+  #overview-tables tbody,
+  #overview-tables th,
+  #overview-tables td {
     font-size: 20px;
     padding: 5px;
   }
+
 }
 
-@media (max-width: 1200px) {
-  #edit-button,
-  #del-button {
-    font-size: 50%;
-  }
-}
+@media (max-width: 1200px) {}
