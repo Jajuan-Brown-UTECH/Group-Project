@@ -6,22 +6,63 @@
   <meta name="author" content = "Group">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Home</title>
-  <link rel="stylesheet" href="CSS/index.css">
   <link rel="stylesheet" href="CSS/general.css">
+  <link rel="stylesheet" href="CSS/index.css">
+
+    <!--Grenze Gotisch-->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Grenze+Gotisch:wght@100..900&family=Headland+One&display=swap" rel="stylesheet">
 </head>
 
-<body id="index-body">
-  <header>
-    <nav id="navbar">
-      <!--To save us the stress and headache for now,
-      the homepage doesn't include image location in
-      the automatic header from the javascript. Fyah bun dat!-->
-      <div> 
-        <img src="ASSETS/icons/DC_Logo.jpg" alt="deCarteret College Logo">
-        <span>deCartaret College</span>
-      </div> 
-    </nav>
+<body>
+  <header id="header">
+    <div id="page-name">
+      <div id="img-container">
+        <a href="index.html"> <img src="ASSETS/icons/DC_Logo.jpg" alt="school-logo" id="logo"></a>
+        <div class="tooltip">Home</div>
+      </div>
+      <div id="page-headers">
+        <h1>DeCarteret College</h1>
+        <h2>Home</h2>
+      </div>
+    </div>
+    <div id="navigation">
+      <nav>
+        <a href="HTML/login.html">Login</a>
+        <a href="HTML/about.html">About Us</a>
+        <a href="HTML/contact.html">Contact Us</a>
+      </nav>
+    </div>
   </header>
+
+  <main class="mainSection">
+    <section class="headerImg">
+      <h2 id="text">DECARTERET COLLEGE</h2>
+      <img id="frontImg" src="ASSETS/images/Prefecture2025.png" alt="2025 prefecture">
+    </section>
+
+    
+
+    <section class="about">
+      <img id="1" src="ASSETS/images/Founder'sDay.jpg" alt="Founder's Day Gathering">
+      <div id="2">
+        <h2>Cultivating a spirit of excellence since 1919.</h2>
+        <button>
+          <a href="HTML/about.html">Learn More</a>
+        </button>
+      </div>
+
+      <div>
+        <p>Our Core Values of Accountability, Respect, Integrity, Self-discipline and Excellence drive all we do.
+        Aedificamus!</p>
+      </div>
+  </main>
+
+  <footer class="footer">
+    <h3>Aedificaums, We Are Building</h3>
+    <p>© decarteret College, 2026. All Rights Reserved</p>
+  </footer>
 
   <script src="JS/initial.js"></script>
 </body>

@@ -1,15 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Viewer</title>
-  <link rel="stylesheet" href="CSS/general.css">
+  <title>Read-Only Viewer | DeCarteret College</title>
+  
+  <link rel="stylesheet" href="../CSS/general.css">
+  <link rel="stylesheet" href="../CSS/reports.css">
 </head>
-
 <body>
 
-</body>
+  <!-- HEADER -->
+   <header id="admin-header">
+    <div id="page-name">
+      <img src="../ASSETS/icons/DC_Logo.jpg" alt="school-logo" id="logo">
+      <div id="page-headers">
+        <h1>deCartet College</h1>
+        <h2>Admin Dashboard</h2>
+      </div>
+    </div>
+    <div id="navigation">
+      <nav>
+        <ul>
+        <!-- Viewer only has access to this page and logout -->
+        <li><a href="viewer.html">Financial Viewer</a></li>
+        <li><a href="#" id="logoutBtn">Logout</a></li>
+      </ul>
+      </nav>
+    </div>
+  </header>
 
+
+
+  <main>
+    
+    <!-- SEARCH & FILTER CONTROLS -->
+    <section>
+      <div>
+        <label for="searchInput">Search Student:</label>
+        <input type="text" id="searchInput" placeholder="Enter Student ID or Name...">
+      </div>
+
+      <div>
+        <label for="statusFilter">Filter Status:</label>
+        <select id="statusFilter">
+          <option value="All">All Statuses</option>
+          <option value="Paid">Paid</option>
+          <option value="Pending">Pending</option>
+          <option value="Outstanding">Outstanding</option>
+        </select>
+      </div>
+
+      <div>
+        <button type="button" id="printBtn">Print Report</button>
+      </div>
+    </section>
+
+    <!-- FINANCIAL LEDGER (READ-ONLY) -->
+    <section>
+      <h2>Financial Statements & Reports</h2>
+      <p>View-only access. If you require changes, please contact the Administrator.</p>
+      
+      <div class="table-responsive">
+        <table id="ledgerTable">
+          <caption>Financial Ledger showing student tuition, payments, and current balance.</caption>
+          <thead>
+            <tr>
+              <th scope="col">Student ID</th>
+              <th scope="col">Name</th>
+              <th scope="col">Total Tuition</th>
+              <th scope="col">Amount Paid</th>
+              <th scope="col">Balance</th>
+              <th scope="col">Status</th>
+              
+            </tr>
+          </thead>
+          <tbody id="ledgerBody">
+            <tr>
+              <td colspan="6" style="text-align: center;">Loading records...</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>&copy; 2026 DeCarteret College | CIT2011 Web Programming Group Project</p>
+  </footer>
+
+  
+  <script src="../JS/viewer.js"></script>
+</body>
 </html>

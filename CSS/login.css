@@ -1,14 +1,115 @@
-.login-header{
+/*Header Container*/
+#login-header {
   position: relative;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 2rem;
+
   background-color: white;
-  padding: 1rem;
-  color: var(--header-color);
-  margin-bottom: 2rem;
-  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+  padding: 0.6rem 1.5rem;
+  color: var(--header-color, #552882);
+
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
   z-index: 100;
+}
+
+/* Logo Container */
+#page-name {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  height: 100%;
+}
+
+#login-header img {
+  height: 10vh;
+  width: auto;
+  object-fit: contain;
+}
+
+/* Stack H1 and H2 Vertically */
+#page-headers {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#login-header h1,
+#login-header h2 {
+  display: block;
+  font-family: var(--nav-header-font, 'Grenze Gotisch', serif);
+  color: var(--header-color, #552882);
+  margin: 0;
+  line-height: 1.15;
+}
+
+#login-header h1 {
+  font-size: clamp(1.4rem, 1.5rem + 0.5vw, 2.2rem);
+}
+
+#login-header h2 {
+  font-size: clamp(1rem, 1.1rem + 0.3vw, 1.5rem);
+}
+
+/*Navigation Links*/
+#navigation {
+  height: 100%;
+}
+
+#login-header nav {
+  display: flex;
+  align-items: center;
+  gap: 1.2vw;
+}
+
+#login-header a {
+  text-decoration: none;
+  color: #4a5568;
+  font-size: clamp(1rem, 1rem + 0.4vw, 1.4rem);
+  padding-bottom: 3px;
+}
+
+
+#login-header a:hover {
+  color: var(--header-hover, #59268b);
+  transition: 0.5s ease;
+}
+
+/*Underline Active Page */
+#login-header a[href*="login.html"] {
+  border-bottom: 2px solid #4a5568;
+}
+
+/*Centering login container*/
+.login-container {
+  display: flex;
+  justify-content: center; /*Centers horizontally*/
+  align-items: center;     /*Centers vertically*/
+  min-height: 75vh;        /*Gives vertical space between header and footer*/
+}
+
+.login-card {
+  width: 900px; /*Makes box wider*/
+  background-color: rgb(229, 222, 234);
+  padding: 20px; /*Makes box taller and spacious*/
+  border-radius: 8px;
+  border-top: 6px solid #552882;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/*Full-width Inputs for unsername and pasword*/
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 12px 15px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.login-note{
+    text-align: center;
 }

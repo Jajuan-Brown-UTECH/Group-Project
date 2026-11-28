@@ -1,70 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
+
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" href="../CSS/general.css">
     <link rel="stylesheet" href="../CSS/admin.css">
-
+    <link rel="stylesheet" href="../CSS/login.css">
     <!--Grenze Gotisch-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Grenze+Gotisch:wght@100..900&family=Headland+One&display=swap"
-        rel="stylesheet">
-    </head>
-    <body>
-       <header id="login-header">
-    <div id="page-name">
-      <img src="../ASSETS/icons/DC_Logo.jpg" alt="school-logo" id="logo">
-      <div id="page-headers">
-        <h1>DeCartet College</h1>
-        <h2>Login Page</h2>
-      </div>
-    </div>
+    <link href="https://fonts.googleapis.com/css2?family=Grenze+Gotisch:wght@100..900&family=Headland+One&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header id="login-header" class="login-top">
+        <div id="page-name">
+            <div id="img-container">
+                <img src="../ASSETS/icons/DC_Logo.jpg" alt="school-logo" id="logo">
+            </div>
+             <div id="page-headers">
+                <h1>DeCartet College</h1>
+                <h2>Login Page</h2>
+            </div>
+        </div>
+
+        <div id="navigation">
+            <nav>
+                <a href="../index.html">Home</a>
+                <a href="../HTML/about.html">About</a>
+                <a href="../HTML/contact.html">Contact</a>
+                <a href="../HTML/login.html">Login</a>
+            </nav>
+        </div>
+    </header>
 
     <main class="login-container">
-
-        <div class="login-card">
-
+        <section class="login-card center-wrapper">
             <h1>School Portal</h1>
-            <p>Please sign in to continue</p>
-
+            <p><b>Please sign in to continue</b></p>
             <!--Validation message-->
             <div id="message" class="message"></div>
 
             <!--Login Form-->
-            <form id="loginForm">
-
+            <form id="loginForm" novalidate>
                 <div class="form-group">
                     <label for="username">Username</label>
-
-                    <input
-                        type="text"
-                        id="username"
-                        placeholder="Enter username"
-                        required>
+                    <input type="text" id="username" placeholder="Please enter your username" autocomplete="username" required>
                 </div>
 
                 <div class="form-group">
                     <label for="password">Password</label>
-
-                    <input
-                        type="password"
-                        id="password"
-                        placeholder="Enter password"
-                        required>
+                    <input type="password" id="password" placeholder="Please enter your password" autocomplete="password" required>
                 </div>
+
                 <!--Login button-->
-                <button type="submit">
-                    Login
-                </button>
-
+                <button type="submit" id="login-btn" class="purple-btn">Login</button>
             </form>
-
-        </div>
+            <br><br>
+            <p class="login-note"><b>Administrators, Teachers and Authorized Viewers each go to their respective dashboard's after logining in.</b></p>
+            <br><br>
+        </section>
 
     </main>
+
+    <footer class="footer">
+    <div>
+      <h3>Visit Us</h3>
+      <p>2 Woodlawn Road, Mandeville, Manchester, Jamaica</p>
+    </div>
+
+    <div>
+      <h3>Call Us</h3>
+      <p>(876) 962-0374</p>
+      <p>(876) 962-2546</p>
+    </div>
+    <br><br>
+    <br><br>
+    <div>
+      <h3>Office Hours</h3>
+      <p>Monday to Friday, 8:00 a.m. to 3:30 p.m.</p>
+    </div>
+    <p class="footer-bottom">Copyright &copy; 2026, DeCarteret College. Aedificamus: We Build.</p>
+  </footer>
 
     <!--Database loads first-->
     <script src="js/database.js"></script>
