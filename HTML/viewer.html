@@ -1,31 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Read-Only Viewer | DeCarteret College</title>
-  
+
   <link rel="stylesheet" href="../CSS/general.css">
   <link rel="stylesheet" href="../CSS/reports.css">
+
+  <!--Grenze Gotisch & Linden Hill-->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Grenze+Gotisch:wght@100..900&family=Headland+One&family=Linden+Hill:ital@0;1&display=swap"
+    rel="stylesheet">
 </head>
+
 <body>
 
   <!-- HEADER -->
-   <header id="admin-header">
+  <header id="viewer-header">
     <div id="page-name">
       <img src="../ASSETS/icons/DC_Logo.jpg" alt="school-logo" id="logo">
       <div id="page-headers">
-        <h1>deCartet College</h1>
+        <h1>deCarteret College</h1>
         <h2>Admin Dashboard</h2>
       </div>
     </div>
+
     <div id="navigation">
       <nav>
-        <ul>
-        <!-- Viewer only has access to this page and logout -->
-        <li><a href="viewer.html">Financial Viewer</a></li>
-        <li><a href="#" id="logoutBtn">Logout</a></li>
-      </ul>
+        <a href="viewer.html">Financial Viewer</a>
+        <a href="#" id="logoutBtn">Logout</a>
       </nav>
     </div>
   </header>
@@ -33,7 +40,7 @@
 
 
   <main>
-    
+
     <!-- SEARCH & FILTER CONTROLS -->
     <section>
       <div>
@@ -60,7 +67,7 @@
     <section>
       <h2>Financial Statements & Reports</h2>
       <p>View-only access. If you require changes, please contact the Administrator.</p>
-      
+
       <div class="table-responsive">
         <table id="ledgerTable">
           <caption>Financial Ledger showing student tuition, payments, and current balance.</caption>
@@ -72,7 +79,7 @@
               <th scope="col">Amount Paid</th>
               <th scope="col">Balance</th>
               <th scope="col">Status</th>
-              
+
             </tr>
           </thead>
           <tbody id="ledgerBody">
@@ -90,7 +97,8 @@
     <p>&copy; 2026 DeCarteret College | CIT2011 Web Programming Group Project</p>
   </footer>
 
-  
+
   <script src="../JS/viewer.js"></script>
 </body>
+
 </html>
